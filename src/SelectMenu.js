@@ -13,7 +13,6 @@ export default class SelectMenu extends React.Component {
   }
 
   itemClicked = (index, event) => {
-    //w console.log('iC', index, event.target, this)
     this.setState({ activeItemIndex: index })
     if (this.props.onChange) {
       this.props.onChange(index)
@@ -21,7 +20,6 @@ export default class SelectMenu extends React.Component {
   }
 
   render() {
-    console.log('re', this.state.activeItem)
     return (
       <ul className="entity-list">
         {this.props.items.map( (item, i) =>

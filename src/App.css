@@ -1,5 +1,5 @@
 .App {
-  text-align: center;
+  display: flex;
 }
 
 .App-logo {
@@ -28,13 +28,18 @@
 }
 
 .left-menu {
-  width: 300px
+  padding: 30px;
+}
+
+.edit-table {
+  padding: 30px;
 }
 
 .left-menu .entity-list {
-  ZZbackground-color: red;
+  list-style-type: none;
 }
 
 .left-menu .entity-list li.active {
   border-style: solid;
 }
+

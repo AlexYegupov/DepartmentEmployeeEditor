@@ -3,40 +3,36 @@ import PropTypes from 'prop-types';
 
 export default class DepartmentEditor extends React.Component {
   static propTypes = {
-    //departments: PropTypes.string,
-    //onChange: PropTypes.func,
     data: PropTypes.object,
-
     onSave: PropTypes.func,
   }
 
   constructor(props) {
     super(props)
     this.state = {
-      data: props.data
+      data: props.data,
+      modified: false
     }
   }
 
   valueChanged = (field, event) => {
-    //const field = event.target.name
     const value = event.target.value
 
-    console.log('vC', this, field, event.target.value, {data: {...this.state.data, [field]: value }})
-
     this.setState((prevState, props) => (
-      {data: {...prevState.data, [field]: value}}
+      {data: {...prevState.data, [field]: value}, modified: true}
     ))
-
-    /* if (this.props.onChange) {
-     *   this.props.onChange(event.target.value)
-     * }*/
   }
 
   saveClicked = (event) => {
-    console.log('sC', this.state.data)
     if (this.props.onSave) {
       this.props.onSave(this.state.data)
     }
+    // TODO: naive optimistic
+    this.setState({modified: false})
+  }
+
+  cancelClicked = (event) => {
+    this.setState( (prevState, props) => ({data: props.data, modified: false}) )
   }
 
   componentWillReceiveProps(nextProps) {
@@ -45,12 +41,11 @@ export default class DepartmentEditor extends React.Component {
 
 
   render() {
-    console.log('DE.render', this.state.data)
     return <div>
       <input type="text" placeholder="Name" value={this.state.data.name} onChange={this.valueChanged.bind(null, 'name')} />
 
-      <button type="button" onClick={this.saveClicked}>Save</button>
-      {/* TODO: cancel button  */}
+      <button type="button" disabled={!this.state.modified} onClick={this.saveClicked}>Save</button>
+      <button type="button" disabled={!this.state.modified} onClick={this.cancelClicked}>Cancel</button>
     </div>
   }
 }

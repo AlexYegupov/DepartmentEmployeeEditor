@@ -18,3 +18,14 @@ Employees
 Контент 
 
 Таблица редактирования выбранной сущности
+
+
+# Quick start
+
+```
+npm install
+npm run start
+```
+
+# TODO
+ - checking patching result (pessimistic)
