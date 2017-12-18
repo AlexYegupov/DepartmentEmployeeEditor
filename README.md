@@ -1,31 +1,24 @@
-# Тестовое задание (RU)
+# Test task
 
-Необходимо написать небольшое приложение на React по следующему тз:
-В качестве бекенда можно использовать любой мок-сервер, например https://github.com/typicode/json-server
+Need to create a small application on React.
+For backend use any mock-server like  https://github.com/typicode/json-server
 
-## Модели
-
+## Models
 Department (name: string)
 Employee (firstName: string, lastName: string, departmentId:number) 
 
-## Интерфейс
-
-Левое меню
-
-Departments
-Employees
-
-Контент 
-
-Таблица редактирования выбранной сущности
+## Interface
+Left Menu: Departments, Employees
+ 
+Content: table for editing selected entity.
 
 
-# Quick start
+# Solution: quick start
 
 ```
 npm install
 npm run start
 ```
 
-# TODO
+## TODO
  - checking patching result (pessimistic)
